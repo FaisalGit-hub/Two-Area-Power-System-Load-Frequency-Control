@@ -46,4 +46,38 @@ The model outputs and plots the following signals for each area:
 - `F in Hz` — absolute area frequency
 - `ACE1`, `ACE2` — Area Control Error for each area
 
-## Repository Contents
+
+## Requirements
+
+- MATLAB (R2021a or later recommended)
+- Simulink
+- No additional toolboxes required
+
+## How to Run
+
+1. Clone this repository:
+```bash
+   git clone https://github.com/<your-username>/two-area-agc.git
+```
+2. Open MATLAB and navigate to the cloned folder.
+3. Open the model:
+```matlab
+   open('two_area_agc.slx')
+```
+4. Run the simulation (Ctrl+T or the **Run** button in Simulink).
+5. Apply a step load disturbance using the **Load Disturbance** blocks and observe the frequency deviation, tie-line power, and ACE responses on the scopes.
+
+## Key Concepts Demonstrated
+
+- Primary frequency control via governor droop
+- Secondary frequency control via Automatic Generation Control (AGC)
+- Area Control Error (ACE) formulation: `ACE = ΔP_tie + B·Δf`
+- Tie-line power flow modeling between interconnected areas
+- Steady-state frequency and tie-line power restoration after load disturbances
+
+## Possible Extensions
+
+- Add a third interconnected area
+- Introduce generation rate constraints (GRC) and governor dead-band nonlinearities
+- Replace integral control with PI/PID or fuzzy/optimal (LQR) AGC controllers
+- Compare classical AGC with modern control strategies (e.g., robust control, reinforcement learning)
