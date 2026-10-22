@@ -234,7 +234,7 @@ The project provides a foundation for studying interconnected power system dynam
 
 ---
 
-**Project:** Two-Area Load Frequency Control Using AGC
-**Environment:** MATLAB/Simulink
-**Simulation duration:** 50 seconds
-**Signal units:** Per unit (pu)
+**Project:** Two-Area Load Frequency Control Using AGC  
+**Environment:** MATLAB/Simulink  
+**Simulation duration:** 50 seconds  
+**Signal units:** Per unit (pu)  
