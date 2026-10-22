@@ -77,46 +77,59 @@ The parameters can be modified in the corresponding Simulink Gain and Transfer F
 
 ## Control Equations
 
-### Area Control Error (ACE)
+### 1. Area Control Error (ACE)
 
-The ACE combines the frequency deviation of a control area with its tie-line power deviation:
+The Area Control Error (ACE) combines the frequency deviation of a control area with its net tie-line power deviation.
 
-[
-ACE_1=\Delta P\_{tie,1}+B_1\Delta f_1
-]
+$$
+\mathrm{ACE}_1 = \Delta P_{\mathrm{tie},1} + B_1 \Delta f_1
+$$
 
-[
-ACE_2=\Delta P\_{tie,2}+B_2\Delta f_2
-]
+$$
+\mathrm{ACE}_2 = \Delta P_{\mathrm{tie},2} + B_2 \Delta f_2
+$$
 
 where:
 
-- (\Delta P\_{tie,i}) is the net tie-line power deviation for area (i), with a consistent import/export sign convention.
-- (B_i) is the frequency bias of area (i).
-- (\Delta f_i) is the frequency deviation of area (i).
+- \(\Delta P_{\mathrm{tie},i}\) represents the net tie-line power deviation of area \(i\).
+- \(B_i\) represents the frequency bias of area \(i\).
+- \(\Delta f_i\) represents the frequency deviation of area \(i\).
 
-For a two-area system, the tie-line deviations are equal and opposite when expressed using the same reference direction.
+For a two-area system, the tie-line power deviations are equal and opposite when both areas use the same reference direction.
 
-### Integral AGC Controller
+### 2. Integral AGC Controller
 
-The secondary controller integrates ACE to generate a control adjustment:
+The secondary controller integrates the Area Control Error to generate a control adjustment.
 
-[
-\Delta P\_{AGC,i}(s)=\frac{K_i}{s}ACE_i(s)
-]
+$$
+\Delta P_{\mathrm{AGC},i}(s) = \frac{K_i}{s}\,\mathrm{ACE}_i(s)
+$$
 
-The actual sign of the control action depends on the summing-junction convention in the Simulink model. The controller acts to reduce ACE and restore the system toward its scheduled operating condition.
+where:
 
-### Tie-Line Power Dynamics
+- \(K_i\) is the integral controller gain.
+- \(s\) is the Laplace variable.
+- \(\mathrm{ACE}_i(s)\) is the Laplace transform of the Area Control Error.
+
+The integral controller acts to reduce ACE and restore the system toward its scheduled operating condition. The direction of the control action depends on the summing-junction convention implemented in the Simulink model.
+
+### 3. Tie-Line Power Dynamics
 
 For small deviations around an operating point, the incremental tie-line power exchange can be represented by:
 
-[
-\Delta P\_{12}(s)=\frac{P_s}{s}
+$$
+\Delta P_{12}(s) =
+\frac{P_s}{s}
 \left[\Delta f_1(s)-\Delta f_2(s)\right]
-]
+$$
 
-Here, (P_s) is the tie-line synchronizing coefficient. The sign depends on the direction chosen for positive tie-line power flow.  
+where:
+
+- \(P_s\) is the tie-line synchronizing coefficient.
+- \(\Delta f_1(s)\) and \(\Delta f_2(s)\) represent the Laplace transforms of the frequency deviations in Areas 1 and 2, respectively.
+- \(\Delta P_{12}(s)\) represents the Laplace transform of the tie-line power deviation.
+
+The sign convention depends on the chosen direction of positive tie-line power flow. The frequency units and synchronizing coefficient must also be consistent with the model's normalization.  
 
 ## Block Diagram  
 <img width="1235" height="818" alt="image" src="https://github.com/user-attachments/assets/274c9852-915e-489f-b957-90d7949f6938" />
