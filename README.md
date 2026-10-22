@@ -116,7 +116,11 @@ For small deviations around an operating point, the incremental tie-line power e
 \left[\Delta f_1(s)-\Delta f_2(s)\right]
 ]
 
-Here, (P_s) is the tie-line synchronizing coefficient. The sign depends on the direction chosen for positive tie-line power flow.
+Here, (P_s) is the tie-line synchronizing coefficient. The sign depends on the direction chosen for positive tie-line power flow.  
+
+## Block Diagram  
+<img width="1235" height="818" alt="image" src="https://github.com/user-attachments/assets/274c9852-915e-489f-b957-90d7949f6938" />
+
 
 ## Simulation Results
 
