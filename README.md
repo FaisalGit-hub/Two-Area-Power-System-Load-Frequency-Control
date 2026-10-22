@@ -89,13 +89,14 @@ $$
 \mathrm{ACE}_2 = \Delta P_{\mathrm{tie},2} + B_2 \Delta f_2
 $$
 
-where:
+**Where:**
 
-- \(\Delta P_{\mathrm{tie},i}\) represents the net tie-line power deviation of area \(i\).
-- \(B_i\) represents the frequency bias of area \(i\).
-- \(\Delta f_i\) represents the frequency deviation of area \(i\).
+- **ACE₁, ACE₂:** Area Control Errors of Areas 1 and 2.
+- **ΔPₜᵢₑ,₁, ΔPₜᵢₑ,₂:** Net tie-line power deviations of Areas 1 and 2.
+- **B₁, B₂:** Frequency bias coefficients of Areas 1 and 2.
+- **Δf₁, Δf₂:** Frequency deviations of Areas 1 and 2.
 
-For a two-area system, the tie-line power deviations are equal and opposite when both areas use the same reference direction.
+The tie-line power deviations are equal and opposite when both areas use the same reference direction.
 
 ### 2. Integral AGC Controller
 
@@ -105,17 +106,18 @@ $$
 \Delta P_{\mathrm{AGC},i}(s) = \frac{K_i}{s}\,\mathrm{ACE}_i(s)
 $$
 
-where:
+**Where:**
 
-- \(K_i\) is the integral controller gain.
-- \(s\) is the Laplace variable.
-- \(\mathrm{ACE}_i(s)\) is the Laplace transform of the Area Control Error.
+- **ΔPAGC,i(s):** Laplace-domain AGC control adjustment for area i.
+- **Kᵢ:** Integral controller gain for area i.
+- **s:** Laplace variable.
+- **ACEᵢ(s):** Laplace transform of the Area Control Error.
 
-The integral controller acts to reduce ACE and restore the system toward its scheduled operating condition. The direction of the control action depends on the summing-junction convention implemented in the Simulink model.
+The integral controller acts to reduce ACE and restore the system toward its scheduled operating condition. The control-action sign depends on the summing-junction convention used in the Simulink model.
 
 ### 3. Tie-Line Power Dynamics
 
-For small deviations around an operating point, the incremental tie-line power exchange can be represented by:
+For small deviations around an operating point, the incremental tie-line power exchange is represented by:
 
 $$
 \Delta P_{12}(s) =
@@ -123,13 +125,13 @@ $$
 \left[\Delta f_1(s)-\Delta f_2(s)\right]
 $$
 
-where:
+**Where:**
 
-- \(P_s\) is the tie-line synchronizing coefficient.
-- \(\Delta f_1(s)\) and \(\Delta f_2(s)\) represent the Laplace transforms of the frequency deviations in Areas 1 and 2, respectively.
-- \(\Delta P_{12}(s)\) represents the Laplace transform of the tie-line power deviation.
+- **ΔP₁₂(s):** Laplace transform of the tie-line power deviation.
+- **Pₛ:** Tie-line synchronizing coefficient.
+- **Δf₁(s), Δf₂(s):** Laplace transforms of the frequency deviations in Areas 1 and 2.
 
-The sign convention depends on the chosen direction of positive tie-line power flow. The frequency units and synchronizing coefficient must also be consistent with the model's normalization.  
+The sign convention depends on the chosen direction of positive tie-line power flow. The frequency units and synchronizing coefficient must be consistent with the model's normalization.
 
 ## Block Diagram  
 <img width="1235" height="818" alt="image" src="https://github.com/user-attachments/assets/274c9852-915e-489f-b957-90d7949f6938" />
